@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/90b6fe1a-b732-426b-a237-5d8c76a9ec33)
 # IOT management system
 
 Control sensors and actuators connected to ESP32 over the internet!
