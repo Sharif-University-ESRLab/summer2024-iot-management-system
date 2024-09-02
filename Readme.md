@@ -1,65 +1,58 @@
 
-![Logo](https://via.placeholder.com/600x150?text=Your+Logo+Here+600x150)
+# IOT management system
 
-
-# Project Title
-
-A brief description of what this project does and who it's for comes here.
-
+Control sensors and actuators connected to ESP32 over the internet!
 
 ## Tools
-In this section, you should mention the hardware or simulators utilized in your project.
-- Qemu
-- Gem5
+- Django
+- Vue.js
+- Mosquito
 - ESP32
-- Raspberry Pi 3B
-- Temperature Sensor
+- ApexChart
 
 
 ## Implementation Details
+This project has 4 part:
+- ESP32 codes
+- Django backend
+- Vue.js frontend
+- Musquito broker
 
-In this section, you will explain how you completed your project. It is recommended to use pictures to demonstrate your system model and implementation.
+ESP32s connect to a mqtt broker, and send their data and recive commands in json. Django server connect to broker, and send and recive data. each device has a object in django, with an token. this token is used for authentication and is send with each message.  to add device, you can use your panel in frontend. data is saved in a sql table, with device and time.
 
-
-Feel free to use sub-topics for your projects. If your project consists of multiple parts (e.g. server, client, and embedded device), create a separate topic for each one.
 
 ## How to Run
 
-In this part, you should provide instructions on how to run your project. Also if your project requires any prerequisites, mention them. 
-
-#### Examples:
-#### Build Project
-Your text comes here
+First, run a mosqutio broker on a server, you can use your it's offical documents. 
+After runnig that, you should update the code for ESP32 to connect to wifi and also connect to mqtt broker.
+also change the credentials of mqtt broker in mqtt_client file in the backend. now you can run django backend with this command in the folder of dashboard:
 ```bash
-  build --platform=OvmfPkg/OvmfPkgX64.dsc --arch=X64 --buildtarget=RELEASE --tagname=GCC5
+python manage.py runserver
 ```
 
-#### Run server
-Your text comes here
+after that, run this command in frontend folder to starts serving frontend:
 ```bash
-  pyhton server.py -p 8080
+npm run serve
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `-p` | `int` | **Required**. Server port |
+for each esp32, you need a token, you can get that token by adding a new device in the frontend. you should be able to see your devices.
+then upload code to the esp32 and customize ports if you like.
 
+you can use bore for testing project over the Internet. 
 
 
 ## Results
-In this section, you should present your results and provide an explanation for them.
+![]
 
-Using image is required.
 
 ## Related Links
-Some links related to your project come here.
- - [EDK II](https://github.com/tianocore/edk2)
  - [ESP32 Pinout](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/)
  - [Django Doc](https://docs.djangoproject.com/en/5.0/)
+ - [bore](https://github.com/ekzhang/bore)
+ - [Apexcharts](http://apexcharts.com/)
 
 
 ## Authors
 Authors and their github link come here.
-- [@Author1](https://github.com/Sharif-University-ESRLab)
-- [@Author2](https://github.com/Sharif-University-ESRLab)
+- [@moeen89](https://github.com/moeen89/)
 
