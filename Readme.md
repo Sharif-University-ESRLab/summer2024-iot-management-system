@@ -1,4 +1,4 @@
-
+![image](https://github.com/user-attachments/assets/90b6fe1a-b732-426b-a237-5d8c76a9ec33)
 # IOT management system
 
 Control sensors and actuators connected to ESP32 over the internet!
@@ -36,14 +36,18 @@ npm run serve
 ```
 
 for each esp32, you need a token, you can get that token by adding a new device in the frontend. you should be able to see your devices.
-then upload code to the esp32 and customize ports if you like.
+then upload code to the esp32 and customize ports if you like. when you login in you accuant, it gets your devices and show their contorls and data to you.
 
 you can use bore for testing project over the Internet. 
 
 
 ## Results
+login page:
 ![login](https://github.com/Sharif-University-ESRLab/summer2024-iot-management-system/blob/main/Miscellaneous/photo_2024-09-02_21-03-14.jpg)
+user panel:
 ![user panel](https://github.com/Sharif-University-ESRLab/summer2024-iot-management-system/blob/main/Miscellaneous/photo_2024-09-02_21-03-20.jpg)
+test:
+![project test](https://github.com/Sharif-University-ESRLab/summer2024-iot-management-system/blob/main/Miscellaneous/photo_2024-09-02_21-02-33.jpg)
 
 
 
