@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for device in devices %}
+    <h3>{{ device.topic }}</h3>
+    {% if device.name == 'sensor' %}
+        <p> salam khobi?</p>
+    {% endif %}
+
+    {% if device.name == 'boolean actuator' %}
+        <div>
+            <button type="button" class="btn btn-success" onclick="toggleActuator('on')">On</button>
+            <button type="button" class="btn btn-danger" onclick="toggleActuator('off')">Off</button>
+        </div>
+    {% endif %}
+
+    {% if device.name == 'integer actuator' %}
+         <div>
+            <form action="{{ device.topic }}/" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="integerValue">Enter Integer Value:</label>
+                    <input type="number" class="form-control" id="integerValue" name="integerValue" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    {% endif %}
+
+{% endfor %}
+
+<script>
+    function toggleActuator(state) {
+        const url = '{{ device.topic }}/' + state;
+        fetch(url, { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok');
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('Actuator ' + state + ' action successful!');
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                alert('Error performing actuator ' + state + ' action.');
+            });
+    }
+</script>
+
+</body>
+</html>
